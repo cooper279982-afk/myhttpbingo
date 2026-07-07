@@ -1,0 +1,18 @@
+{{- if .Values.apisix.enabled }}
+apiVersion: {{ .Values.apisix.apiVersion }}
+kind: ApisixRoute
+metadata:
+  name: {{ .Values.name }}
+  namespace: {{ .Values.namespace }}
+spec:
+  http:
+    - name: {{ .Values.name }}
+      match:
+        hosts:
+          - {{ .Values.apisix.host }}
+        paths:
+          - {{ .Values.apisix.path | quote }}
+      backends:
+        - serviceName: {{ .Values.name }}
+          servicePort: {{ .Values.service.port }}
+{{- end }}

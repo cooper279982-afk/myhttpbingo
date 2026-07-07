@@ -1,0 +1,7 @@
+apiVersion: v2
+name: httpbingo
+description: Fleet Helm chart for go-httpbin exposed through APISIX.
+type: application
+version: 0.1.0
+appVersion: latest
+

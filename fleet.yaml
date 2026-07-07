@@ -1,0 +1,4 @@
+defaultNamespace: test
+helm:
+  chart: .
+

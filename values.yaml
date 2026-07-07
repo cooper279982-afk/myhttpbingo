@@ -1,0 +1,23 @@
+name: httpbingo
+namespace: test
+
+replicaCount: 1
+
+image:
+  repository: ghcr.io/mccutchen/go-httpbin
+  tag: latest
+  pullPolicy: IfNotPresent
+
+containerPort: 8080
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: http
+
+apisix:
+  enabled: true
+  apiVersion: apisix.apache.org/v2
+  host: httpbingo.example.org
+  path: /*
+
