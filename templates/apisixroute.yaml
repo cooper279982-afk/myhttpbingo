@@ -5,6 +5,7 @@ metadata:
   name: {{ .Values.name }}
   namespace: {{ .Values.namespace }}
 spec:
+  ingressClassName: {{ .Values.apisix.ingressClassName }}
   http:
     - name: {{ .Values.name }}
       match:

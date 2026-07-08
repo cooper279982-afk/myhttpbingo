@@ -18,20 +18,6 @@ service:
 apisix:
   enabled: true
   apiVersion: apisix.apache.org/v2
+  ingressClassName: apisix
   host: httpbingo.example.org
   path: /*
-  gatewayProxy:
-    enabled: true
-    apiVersion: apisix.apache.org/v1alpha1
-    name: apisix
-    namespace: apisix
-    publishService: apisix/apisix-gateway
-    controlPlane:
-      mode: apisix
-      endpoints:
-        - http://apisix-admin.apisix.svc.cluster.local:9180
-      tlsVerify: false
-      adminKeySecret:
-        name: apisix-admin-key
-        key: admin-key
-        value: edd1c9f034335f136f87ad84b625c8f1
