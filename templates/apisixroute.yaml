@@ -16,4 +16,14 @@ spec:
       backends:
         - serviceName: {{ .Values.name }}
           servicePort: {{ .Values.service.port }}
+      plugins:
+      - name: request-id
+        enable: true
+        config:
+          request_id_key: x-request-id
+          request_id_header: x-request-id
+          request_id_header_upstream: x-request-id
+          request_id_header_upstream_append: true
+          request_id_header_upstream_prefix: x-request-id-
+          request_id_header_upstream_suffix: x-request-id-
 {{- end }}
