@@ -26,4 +26,18 @@ spec:
           request_id_header_upstream_append: true
           request_id_header_upstream_prefix: x-request-id-
           request_id_header_upstream_suffix: x-request-id-
+      - name: limit-count
+        enable: true
+        config:
+          count: 10
+          time_window: 60
+          rejected_code: 429
+          key_type: var
+          key: remote_addr
+          policy: redis
+          redis_host: redis.apisix.svc.cluster.local
+          redis_port: 6379
+          redis_password: "p@ssw0rd"
+          redis_database: 0
+          redis_timeout: 1000
 {{- end }}
